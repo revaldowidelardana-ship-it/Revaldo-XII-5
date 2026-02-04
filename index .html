@@ -1,0 +1,981 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Najla Khairunnisa - Personal Portfolio. A soul who finds comfort in singing, films, and written worlds.">
+  <meta name="keywords" content="Najla Khairunnisa, writer, singer, portfolio, personal website">
+  <meta name="author" content="Najla Khairunnisa">
+  <title>Najla Khairunnisa | Personal Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Lora:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    :root {
+      --bg-primary: #1a1410;
+      --bg-secondary: #2a2018;
+      --text-primary: #f5f0e8;
+      --text-secondary: #d4c8b8;
+      --accent: #8b6914;
+      --accent-hover: #a67c00;
+    }
+    
+    .light-mode {
+      --bg-primary: #f5f0e8;
+      --bg-secondary: #ffffff;
+      --text-primary: #1a1410;
+      --text-secondary: #4a4035;
+      --accent: #8b6914;
+      --accent-hover: #6b5010;
+    }
+    
+    * {
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    .font-playfair {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .font-cormorant {
+      font-family: 'Cormorant Garamond', serif;
+    }
+    
+    .font-lora {
+      font-family: 'Lora', serif;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(2deg); }
+    }
+    
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(-2deg); }
+    }
+    
+    @keyframes floatProfile {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .float-animation {
+      animation: float 4s ease-in-out infinite;
+    }
+    
+    .float-slow {
+      animation: floatSlow 5s ease-in-out infinite;
+    }
+    
+    .float-profile {
+      animation: floatProfile 3s ease-in-out infinite;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .animate-fadeInUp {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+    .delay-500 { animation-delay: 0.5s; }
+    
+    .parallax-bg {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    
+    .skill-bar {
+      background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+      transition: width 1.5s ease-out;
+    }
+    
+    .glass-effect {
+      backdrop-filter: blur(10px);
+      background: rgba(42, 32, 24, 0.8);
+    }
+    
+    .light-mode .glass-effect {
+      background: rgba(255, 255, 255, 0.9);
+    }
+    
+    .feather-icon {
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+    }
+    
+    .scroll-hidden {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease-out;
+    }
+    
+    .scroll-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .chat-bubble {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+    
+    .sidebar-link {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .sidebar-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+    
+    .sidebar-link:hover::after {
+      width: 100%;
+    }
+    
+    .card-hover {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+    
+    .profile-ring {
+      background: linear-gradient(135deg, var(--accent), #d4a855, var(--accent));
+      padding: 4px;
+    }
+    
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: var(--bg-primary);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent);
+      border-radius: 4px;
+    }
+    
+    .video-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .video-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-lora" style="background-color: var(--bg-primary); color: var(--text-primary);">
+  <div id="app-container" class="h-full overflow-auto"><!-- Navbar -->
+   <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 glass-effect border-b" style="border-color: var(--accent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="flex justify-between items-center h-16"><a href="#home" class="font-playfair text-xl sm:text-2xl font-semibold" style="color: var(--accent);"> NK </a> <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center space-x-8"><a href="#home" class="sidebar-link py-2" style="color: var(--text-secondary);">Beranda</a> <a href="#about" class="sidebar-link py-2" style="color: var(--text-secondary);">About Me</a> <a href="#favorites" class="sidebar-link py-2" style="color: var(--text-secondary);">Favorit</a> <a href="#skills" class="sidebar-link py-2" style="color: var(--text-secondary);">Keahlian</a> <a href="#contact" class="sidebar-link py-2" style="color: var(--text-secondary);">Kontak</a>
+      </div>
+      <div class="flex items-center space-x-4"><!-- Dark/Light Mode Toggle --> <button id="themeToggle" class="p-2 rounded-full" style="background-color: var(--bg-secondary);" aria-label="Toggle theme">
+        <svg id="sunIcon" class="w-5 h-5 hidden" fill="currentColor" viewbox="0 0 20 20" style="color: var(--accent);"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
+        </svg>
+        <svg id="moonIcon" class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20" style="color: var(--accent);"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+        </svg></button> <!-- Mobile Menu Button --> <button id="mobileMenuBtn" class="md:hidden p-2" aria-label="Menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg></button>
+      </div>
+     </div>
+    </div><!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden" style="background-color: var(--bg-secondary);">
+     <div class="px-4 py-4 space-y-3"><a href="#home" class="block py-2 px-4 rounded" style="color: var(--text-secondary);">Beranda</a> <a href="#about" class="block py-2 px-4 rounded" style="color: var(--text-secondary);">About Me</a> <a href="#favorites" class="block py-2 px-4 rounded" style="color: var(--text-secondary);">Favorit</a> <a href="#skills" class="block py-2 px-4 rounded" style="color: var(--text-secondary);">Keahlian</a> <a href="#contact" class="block py-2 px-4 rounded" style="color: var(--text-secondary);">Kontak</a>
+     </div>
+    </div>
+   </nav><!-- Sidebar (Desktop) -->
+   <aside class="fixed left-0 top-1/2 transform -translate-y-1/2 z-40 hidden lg:block">
+    <div class="glass-effect rounded-r-lg py-4 px-2" style="border: 1px solid var(--accent); border-left: none;">
+     <div class="flex flex-col space-y-4"><a href="mailto:najlakhairunnisa617@gmail.com" class="p-2 rounded-full hover:scale-110 transition-transform" style="background-color: var(--accent);" aria-label="Email">
+       <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20" style="color: var(--bg-primary);"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" /> <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+       </svg></a> <a href="https://instagram.com/nnaajlaa_" target="_blank" rel="noopener noreferrer" class="p-2 rounded-full hover:scale-110 transition-transform" style="background-color: var(--accent);" aria-label="Instagram">
+       <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24" style="color: var(--bg-primary);"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+       </svg></a>
+     </div>
+    </div>
+   </aside><!-- Hero Section -->
+   <section id="home" class="min-h-screen flex items-center justify-center relative pt-16 overflow-hidden"><!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-5">
+     <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg"><pattern id="pattern" x="0" y="0" width="40" height="40" patternunits="userSpaceOnUse">
+       <circle cx="20" cy="20" r="1" fill="currentColor" />
+      </pattern> <rect fill="url(#pattern)" width="100%" height="100%" />
+     </svg>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
+     <div class="grid lg:grid-cols-2 gap-12 items-center"><!-- Text Content -->
+      <div class="text-center lg:text-left">
+       <p class="font-cormorant text-lg sm:text-xl mb-4 animate-fadeInUp opacity-0" style="color: var(--accent);">Welcome to my world</p>
+       <h1 id="heroTitle" class="font-playfair text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 animate-fadeInUp opacity-0 delay-100 leading-tight" style="color: var(--text-primary);">Growing through mistakes,<br><span style="color: var(--accent);">creating through hope.</span></h1>
+       <p class="font-cormorant text-xl sm:text-2xl italic animate-fadeInUp opacity-0 delay-200" style="color: var(--text-secondary);">— Najla Khairunnisa</p>
+       <div class="mt-8 flex flex-wrap gap-4 justify-center lg:justify-start animate-fadeInUp opacity-0 delay-300"><a href="#about" class="px-8 py-3 rounded-full font-medium transition-all hover:scale-105" style="background-color: var(--accent); color: var(--bg-primary);"> Tentang Saya </a> <a href="#contact" class="px-8 py-3 rounded-full font-medium border-2 transition-all hover:scale-105" style="border-color: var(--accent); color: var(--accent);"> Hubungi Saya </a>
+       </div>
+      </div><!-- Floating Icons -->
+      <div class="relative h-80 lg:h-96 flex items-center justify-center"><!-- Aesthetic Book with Flowers -->
+       <div class="absolute top-0 left-1/4 float-animation">
+        <svg class="w-24 h-24 sm:w-32 sm:h-32 feather-icon" viewbox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg"><!-- Open Book --> <path d="M20 30 Q20 25 25 25 L55 25 Q60 25 60 30 L60 85 Q60 80 55 80 L25 80 Q20 80 20 85 Z" fill="var(--bg-secondary)" stroke="var(--accent)" stroke-width="2" /> <path d="M60 30 Q60 25 65 25 L95 25 Q100 25 100 30 L100 85 Q100 80 95 80 L65 80 Q60 80 60 85 Z" fill="var(--bg-secondary)" stroke="var(--accent)" stroke-width="2" /> <!-- Book spine --> <line x1="60" y1="25" x2="60" y2="85" stroke="var(--accent)" stroke-width="2" /> <!-- Decorative hearts on pages --> <path d="M35 45 Q33 42 35 40 Q37 42 35 45 Z" fill="#d4a855" /> <path d="M40 55 Q38 52 40 50 Q42 52 40 55 Z" fill="#d4a855" /> <path d="M75 45 Q73 42 75 40 Q77 42 75 45 Z" fill="#d4a855" /> <path d="M80 55 Q78 52 80 50 Q82 52 80 55 Z" fill="#d4a855" /> <!-- Flower decoration on top --> <circle cx="30" cy="20" r="4" fill="#d4a855" /> <circle cx="25" cy="18" r="3" fill="#d4a855" opacity="0.7" /> <circle cx="35" cy="18" r="3" fill="#d4a855" opacity="0.7" /> <circle cx="28" cy="15" r="2.5" fill="#d4a855" opacity="0.5" /> <circle cx="32" cy="15" r="2.5" fill="#d4a855" opacity="0.5" />
+        </svg>
+       </div><!-- Vintage Microphone with Sparkles -->
+       <div class="absolute top-1/4 right-1/4 float-slow" style="animation-delay: 0.5s;">
+        <svg class="w-20 h-20 sm:w-28 sm:h-28 feather-icon" viewbox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg"><!-- Vintage mic body --> <ellipse cx="60" cy="45" rx="18" ry="28" fill="var(--bg-secondary)" stroke="var(--accent)" stroke-width="2.5" /> <!-- Decorative lines on mic --> <line x1="50" y1="35" x2="70" y2="35" stroke="var(--accent)" stroke-width="1.5" /> <line x1="50" y1="42" x2="70" y2="42" stroke="var(--accent)" stroke-width="1.5" /> <line x1="50" y1="49" x2="70" y2="49" stroke="var(--accent)" stroke-width="1.5" /> <line x1="50" y1="56" x2="70" y2="56" stroke="var(--accent)" stroke-width="1.5" /> <!-- Mic stand --> <line x1="60" y1="73" x2="60" y2="95" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" /> <line x1="48" y1="95" x2="72" y2="95" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" /> <!-- Sound waves/arc --> <path d="M35 45 Q32 45 30 42" stroke="#d4a855" stroke-width="2" fill="none" stroke-linecap="round" /> <path d="M85 45 Q88 45 90 42" stroke="#d4a855" stroke-width="2" fill="none" stroke-linecap="round" /> <path d="M38 50 Q35 50 33 47" stroke="#d4a855" stroke-width="1.5" fill="none" stroke-linecap="round" /> <path d="M82 50 Q85 50 87 47" stroke="#d4a855" stroke-width="1.5" fill="none" stroke-linecap="round" /> <!-- Sparkles --> <path d="M25 30 L27 32 L25 34 L23 32 Z" fill="#d4a855" /> <path d="M95 30 L97 32 L95 34 L93 32 Z" fill="#d4a855" /> <path d="M20 55 L21 56 L20 57 L19 56 Z" fill="#d4a855" /> <path d="M100 55 L101 56 L100 57 L99 56 Z" fill="#d4a855" />
+        </svg>
+       </div><!-- Vintage Film Camera with Hearts -->
+       <div class="absolute bottom-1/4 left-1/3 float-animation" style="animation-delay: 1s;">
+        <svg class="w-28 h-28 sm:w-36 sm:h-36 feather-icon" viewbox="0 0 140 120" fill="none" xmlns="http://www.w3.org/2000/svg"><!-- Camera body --> <rect x="20" y="35" width="60" height="45" rx="8" fill="var(--bg-secondary)" stroke="var(--accent)" stroke-width="2.5" /> <!-- Lens --> <circle cx="50" cy="57" r="16" fill="var(--bg-secondary)" stroke="var(--accent)" stroke-width="2.5" /> <circle cx="50" cy="57" r="10" fill="none" stroke="var(--accent)" stroke-width="2" /> <circle cx="50" cy="57" r="5" fill="#d4a855" /> <!-- Film reel detail --> <circle cx="28" cy="28" r="9" fill="var(--bg-secondary)" stroke="var(--accent)" stroke-width="2" /> <circle cx="28" cy="28" r="4" fill="none" stroke="var(--accent)" stroke-width="1" /> <circle cx="72" cy="28" r="9" fill="var(--bg-secondary)" stroke="var(--accent)" stroke-width="2" /> <circle cx="72" cy="28" r="4" fill="none" stroke="var(--accent)" stroke-width="1" /> <!-- Viewfinder --> <rect x="65" y="42" width="12" height="8" fill="var(--bg-secondary)" stroke="var(--accent)" stroke-width="1.5" /> <!-- Record button --> <circle cx="32" cy="45" r="3" fill="#d4a855" /> <!-- Film tape coming out --> <rect x="25" y="82" width="10" height="10" fill="var(--bg-secondary)" stroke="var(--accent)" stroke-width="1.5" /> <rect x="60" y="82" width="10" height="10" fill="var(--bg-secondary)" stroke="var(--accent)" stroke-width="1.5" /> <line x1="30" y1="80" x2="30" y2="82" stroke="var(--accent)" stroke-width="2" /> <line x1="65" y1="80" x2="65" y2="82" stroke="var(--accent)" stroke-width="2" /> <!-- Hearts floating --> <path d="M95 40 Q93 37 95 35 Q97 37 95 40 Z" fill="#d4a855" /> <path d="M105 55 Q103 52 105 50 Q107 52 105 55 Z" fill="#d4a855" /> <path d="M100 70 Q98 67 100 65 Q102 67 100 70 Z" fill="#d4a855" /> <!-- Sparkles --> <path d="M90 25 L92 27 L90 29 L88 27 Z" fill="#d4a855" /> <path d="M110 35 L111 36 L110 37 L109 36 Z" fill="#d4a855" />
+        </svg>
+       </div><!-- Aesthetic Flowers & Stars Decoration -->
+       <div class="absolute bottom-0 right-1/4 float-slow" style="animation-delay: 1.5s;">
+        <svg class="w-20 h-20 sm:w-24 sm:h-24 feather-icon" viewbox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><!-- Large flower --> <circle cx="50" cy="50" r="8" fill="#d4a855" /> <circle cx="42" cy="45" r="6" fill="var(--accent)" opacity="0.8" /> <circle cx="58" cy="45" r="6" fill="var(--accent)" opacity="0.8" /> <circle cx="45" cy="58" r="6" fill="var(--accent)" opacity="0.8" /> <circle cx="55" cy="58" r="6" fill="var(--accent)" opacity="0.8" /> <circle cx="50" cy="50" r="4" fill="var(--bg-secondary)" /> <!-- Small flowers --> <circle cx="30" cy="30" r="4" fill="#d4a855" /> <circle cx="25" cy="28" r="3" fill="var(--accent)" opacity="0.6" /> <circle cx="35" cy="28" r="3" fill="var(--accent)" opacity="0.6" /> <!-- Stars --> <path d="M70 25 L72 30 L77 30 L73 33 L75 38 L70 35 L65 38 L67 33 L63 30 L68 30 Z" fill="#d4a855" opacity="0.8" /> <path d="M75 60 L76 63 L79 63 L77 65 L78 68 L75 66 L72 68 L73 65 L71 63 L74 63 Z" fill="#d4a855" opacity="0.7" /> <path d="M25 70 L26 72 L28 72 L26 74 L27 76 L25 75 L23 76 L24 74 L22 72 L24 72 Z" fill="#d4a855" opacity="0.6" />
+        </svg>
+       </div>
+      </div>
+     </div>
+    </div><!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" style="color: var(--accent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+     </svg>
+    </div>
+   </section><!-- About Section -->
+   <section id="about" class="py-20 relative scroll-section" style="background-color: var(--bg-secondary);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-16">
+      <h2 class="font-playfair text-3xl sm:text-4xl lg:text-5xl font-bold mb-4" style="color: var(--text-primary);">About Me</h2>
+      <div class="w-24 h-1 mx-auto rounded" style="background-color: var(--accent);"></div>
+     </div>
+     <div class="grid lg:grid-cols-2 gap-12 items-center"><!-- Profile Image -->
+      <div class="flex justify-center">
+       <div class="profile-ring float-profile" style="border-radius: 24px;">
+        <div class="w-64 h-80 sm:w-80 sm:h-96 overflow-hidden" style="background-color: var(--bg-primary); border-radius: 20px;"><img src="https://i.imgur.com/erzuotC.jpeg" alt="Najla Khairunnisa" loading="lazy" class="w-full h-full object-cover" style="object-position: center 60%;" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, var(--accent), #d4a855)'; this.alt='Image unavailable';">
+        </div>
+       </div>
+      </div><!-- Bio Content -->
+      <div>
+       <h3 class="font-playfair text-2xl sm:text-3xl font-semibold mb-4" style="color: var(--accent);">Najla Khairunnisa</h3>
+       <p id="bioText" class="font-cormorant text-lg sm:text-xl leading-relaxed mb-6" style="color: var(--text-secondary);">I'm Najla Khairunnisa, a soul who finds comfort in singing, films, and written worlds. She enjoys expressing herself through sound and stories, where art feels most like home, and she also finds joy in cooking, turning simple ingredients into little pieces of warmth and creativity.</p><!-- Feather Quill Illustration -->
+       <div class="flex items-center gap-4 mb-8">
+        <svg class="w-12 h-12" viewbox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M35 5 Q20 15 15 30 Q17 35 20 37 L22 45 L25 37 Q40 25 35 5" fill="none" stroke="var(--accent)" stroke-width="1.5" /> <path d="M25 15 Q22 25 22 32" stroke="var(--accent)" stroke-width="1" />
+        </svg><span class="font-cormorant italic" style="color: var(--text-secondary);">"Where words become art"</span>
+       </div><!-- Education -->
+       <div class="mb-6">
+        <h4 class="font-playfair text-xl font-semibold mb-3 flex items-center gap-2" style="color: var(--text-primary);">
+         <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20" style="color: var(--accent);"><path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+         </svg> Pendidikan</h4>
+        <ul class="space-y-2 font-lora" style="color: var(--text-secondary);">
+         <li class="flex items-start gap-2"><span style="color: var(--accent);">✦</span> <span>2014–2020 – SDN Rosela Indah</span></li>
+         <li class="flex items-start gap-2"><span style="color: var(--accent);">✦</span> <span>2020–2023 – SMPN 1 Subang</span></li>
+         <li class="flex items-start gap-2"><span style="color: var(--accent);">✦</span> <span>2023–sekarang – SMAN 1 Subang</span></li>
+        </ul>
+       </div><!-- Experience -->
+       <div class="mb-6">
+        <h4 class="font-playfair text-xl font-semibold mb-3 flex items-center gap-2" style="color: var(--text-primary);">
+         <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20" style="color: var(--accent);"><path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd" /> <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
+         </svg> Pengalaman</h4>
+        <ul class="space-y-2 font-lora" style="color: var(--text-secondary);">
+         <li class="flex items-start gap-2"><span style="color: var(--accent);">✦</span> <span>Mengikuti Ekstrakurikuler BASS di SMPN 1 Subang (2022-2023)</span></li>
+         <li class="flex items-start gap-2"><span style="color: var(--accent);">✦</span> <span>Mengikuti Ekstrakulikuler PADUAN SUARA di SMAN 1 Subang (2024-2025)</span></li>
+        </ul>
+       </div><!-- Hobbies -->
+       <div>
+        <h4 class="font-playfair text-xl font-semibold mb-3 flex items-center gap-2" style="color: var(--text-primary);">
+         <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20" style="color: var(--accent);"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+         </svg> Kegemaran</h4>
+        <div class="flex flex-wrap gap-3"><span class="px-4 py-2 rounded-full text-sm" style="background-color: var(--bg-primary); color: var(--accent); border: 1px solid var(--accent);">📚 Membaca</span> <span class="px-4 py-2 rounded-full text-sm" style="background-color: var(--bg-primary); color: var(--accent); border: 1px solid var(--accent);">🎤 Menyanyi</span> <span class="px-4 py-2 rounded-full text-sm" style="background-color: var(--bg-primary); color: var(--accent); border: 1px solid var(--accent);">🎬 Menonton Film</span> <span class="px-4 py-2 rounded-full text-sm" style="background-color: var(--bg-primary); color: var(--accent); border: 1px solid var(--accent);">🍳 Memasak</span>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Statistics Counter -->
+   <section class="py-16 scroll-section" style="background-color: var(--bg-primary);">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div class="card-hover p-6 rounded-xl" style="background-color: var(--bg-secondary);">
+       <div class="font-playfair text-3xl sm:text-4xl font-bold mb-2" style="color: var(--accent);"><span class="counter" data-target="6">0</span>
+       </div>
+       <p class="font-cormorant" style="color: var(--text-secondary);">Musik Favorit</p>
+      </div>
+      <div class="card-hover p-6 rounded-xl" style="background-color: var(--bg-secondary);">
+       <div class="font-playfair text-3xl sm:text-4xl font-bold mb-2" style="color: var(--accent);"><span class="counter" data-target="8">0</span>
+       </div>
+       <p class="font-cormorant" style="color: var(--text-secondary);">Film Favorit</p>
+      </div>
+      <div class="card-hover p-6 rounded-xl" style="background-color: var(--bg-secondary);">
+       <div class="font-playfair text-3xl sm:text-4xl font-bold mb-2" style="color: var(--accent);"><span class="counter" data-target="4">0</span>
+       </div>
+       <p class="font-cormorant" style="color: var(--text-secondary);">Kegemaran</p>
+      </div>
+      <div class="card-hover p-6 rounded-xl" style="background-color: var(--bg-secondary);">
+       <div class="font-playfair text-3xl sm:text-4xl font-bold mb-2" style="color: var(--accent);"><span class="counter" data-target="3">0</span>
+       </div>
+       <p class="font-cormorant" style="color: var(--text-secondary);">Kemampuan</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Favorites Section -->
+   <section id="favorites" class="py-20 scroll-section" style="background-color: var(--bg-secondary);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-12">
+      <h2 class="font-playfair text-3xl sm:text-4xl lg:text-5xl font-bold mb-4" style="color: var(--text-primary);">Favorit Saya</h2>
+      <div class="w-24 h-1 mx-auto rounded mb-8" style="background-color: var(--accent);"></div><!-- Filter Buttons -->
+      <div class="flex flex-wrap justify-center gap-4 mb-12"><button class="filter-btn active px-6 py-2 rounded-full font-medium transition-all" data-filter="all" style="background-color: var(--accent); color: var(--bg-primary);"> Semua </button> <button class="filter-btn px-6 py-2 rounded-full font-medium transition-all border-2" data-filter="music" style="border-color: var(--accent); color: var(--accent); background: transparent;"> 🎵 Musik </button> <button class="filter-btn px-6 py-2 rounded-full font-medium transition-all border-2" data-filter="film" style="border-color: var(--accent); color: var(--accent); background: transparent;"> 🎬 Film </button>
+      </div>
+     </div><!-- Favorites Grid -->
+     <div id="favoritesGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"><!-- Music Items -->
+      <div class="favorite-item card-hover rounded-xl p-6 transition-all" data-category="music" style="background-color: var(--bg-primary); border: 1px solid var(--accent);">
+       <div class="flex items-center gap-4 mb-4">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background-color: var(--accent);"><span class="text-2xl">🎵</span>
+        </div>
+        <div>
+         <h3 class="font-playfair font-semibold" style="color: var(--text-primary);">Meant 2 be</h3>
+         <p class="font-cormorant text-sm" style="color: var(--text-secondary);">Shakira Jasmine</p>
+        </div>
+       </div>
+      </div>
+      <div class="favorite-item card-hover rounded-xl p-6 transition-all" data-category="music" style="background-color: var(--bg-primary); border: 1px solid var(--accent);">
+       <div class="flex items-center gap-4 mb-4">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background-color: var(--accent);"><span class="text-2xl">🎵</span>
+        </div>
+        <div>
+         <h3 class="font-playfair font-semibold" style="color: var(--text-primary);">Lose</h3>
+         <p class="font-cormorant text-sm" style="color: var(--text-secondary);">NIKI</p>
+        </div>
+       </div>
+      </div>
+      <div class="favorite-item card-hover rounded-xl p-6 transition-all" data-category="music" style="background-color: var(--bg-primary); border: 1px solid var(--accent);">
+       <div class="flex items-center gap-4 mb-4">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background-color: var(--accent);"><span class="text-2xl">🎵</span>
+        </div>
+        <div>
+         <h3 class="font-playfair font-semibold" style="color: var(--text-primary);">Tsunami</h3>
+         <p class="font-cormorant text-sm" style="color: var(--text-secondary);">NIKI</p>
+        </div>
+       </div>
+      </div>
+      <div class="favorite-item card-hover rounded-xl p-6 transition-all" data-category="music" style="background-color: var(--bg-primary); border: 1px solid var(--accent);">
+       <div class="flex items-center gap-4 mb-4">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background-color: var(--accent);"><span class="text-2xl">🎵</span>
+        </div>
+        <div>
+         <h3 class="font-playfair font-semibold" style="color: var(--text-primary);">The Prophecy</h3>
+         <p class="font-cormorant text-sm" style="color: var(--text-secondary);">Taylor Swift</p>
+        </div>
+       </div>
+      </div>
+      <div class="favorite-item card-hover rounded-xl p-6 transition-all" data-category="music" style="background-color: var(--bg-primary); border: 1px solid var(--accent);">
+       <div class="flex items-center gap-4 mb-4">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background-color: var(--accent);"><span class="text-2xl">🎵</span>
+        </div>
+        <div>
+         <h3 class="font-playfair font-semibold" style="color: var(--text-primary);">Is There Someone Else?</h3>
+         <p class="font-cormorant text-sm" style="color: var(--text-secondary);">The Weeknd</p>
+        </div>
+       </div>
+      </div>
+      <div class="favorite-item card-hover rounded-xl p-6 transition-all" data-category="music" style="background-color: var(--bg-primary); border: 1px solid var(--accent);">
+       <div class="flex items-center gap-4 mb-4">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background-color: var(--accent);"><span class="text-2xl">🎵</span>
+        </div>
+        <div>
+         <h3 class="font-playfair font-semibold" style="color: var(--text-primary);">Vampire</h3>
+         <p class="font-cormorant text-sm" style="color: var(--text-secondary);">Olivia Rodrigo</p>
+        </div>
+       </div>
+      </div><!-- Film Items -->
+      <div class="favorite-item card-hover rounded-xl p-6 transition-all" data-category="film" style="background-color: var(--bg-primary); border: 1px solid var(--accent);">
+       <div class="flex items-center gap-4 mb-4">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background-color: var(--accent);"><span class="text-2xl">🎬</span>
+        </div>
+        <div>
+         <h3 class="font-playfair font-semibold" style="color: var(--text-primary);">The Conjuring</h3>
+         <p class="font-cormorant text-sm" style="color: var(--text-secondary);">All Seasons</p>
+        </div>
+       </div>
+      </div>
+      <div class="favorite-item card-hover rounded-xl p-6 transition-all" data-category="film" style="background-color: var(--bg-primary); border: 1px solid var(--accent);">
+       <div class="flex items-center gap-4 mb-4">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background-color: var(--accent);"><span class="text-2xl">🎬</span>
+        </div>
+        <div>
+         <h3 class="font-playfair font-semibold" style="color: var(--text-primary);">Fractured</h3>
+         <p class="font-cormorant text-sm" style="color: var(--text-secondary);">Thriller</p>
+        </div>
+       </div>
+      </div>
+      <div class="favorite-item card-hover rounded-xl p-6 transition-all" data-category="film" style="background-color: var(--bg-primary); border: 1px solid var(--accent);">
+       <div class="flex items-center gap-4 mb-4">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background-color: var(--accent);"><span class="text-2xl">🎬</span>
+        </div>
+        <div>
+         <h3 class="font-playfair font-semibold" style="color: var(--text-primary);">Uncharted</h3>
+         <p class="font-cormorant text-sm" style="color: var(--text-secondary);">Adventure</p>
+        </div>
+       </div>
+      </div>
+      <div class="favorite-item card-hover rounded-xl p-6 transition-all" data-category="film" style="background-color: var(--bg-primary); border: 1px solid var(--accent);">
+       <div class="flex items-center gap-4 mb-4">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background-color: var(--accent);"><span class="text-2xl">🎬</span>
+        </div>
+        <div>
+         <h3 class="font-playfair font-semibold" style="color: var(--text-primary);">Damsel</h3>
+         <p class="font-cormorant text-sm" style="color: var(--text-secondary);">Fantasy</p>
+        </div>
+       </div>
+      </div>
+      <div class="favorite-item card-hover rounded-xl p-6 transition-all" data-category="film" style="background-color: var(--bg-primary); border: 1px solid var(--accent);">
+       <div class="flex items-center gap-4 mb-4">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background-color: var(--accent);"><span class="text-2xl">🎬</span>
+        </div>
+        <div>
+         <h3 class="font-playfair font-semibold" style="color: var(--text-primary);">Shang-Chi</h3>
+         <p class="font-cormorant text-sm" style="color: var(--text-secondary);">Action</p>
+        </div>
+       </div>
+      </div>
+      <div class="favorite-item card-hover rounded-xl p-6 transition-all" data-category="film" style="background-color: var(--bg-primary); border: 1px solid var(--accent);">
+       <div class="flex items-center gap-4 mb-4">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background-color: var(--accent);"><span class="text-2xl">🎬</span>
+        </div>
+        <div>
+         <h3 class="font-playfair font-semibold" style="color: var(--text-primary);">Red Notice</h3>
+         <p class="font-cormorant text-sm" style="color: var(--text-secondary);">Action Comedy</p>
+        </div>
+       </div>
+      </div>
+      <div class="favorite-item card-hover rounded-xl p-6 transition-all" data-category="film" style="background-color: var(--bg-primary); border: 1px solid var(--accent);">
+       <div class="flex items-center gap-4 mb-4">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background-color: var(--accent);"><span class="text-2xl">🎬</span>
+        </div>
+        <div>
+         <h3 class="font-playfair font-semibold" style="color: var(--text-primary);">Now You See Me</h3>
+         <p class="font-cormorant text-sm" style="color: var(--text-secondary);">Mystery</p>
+        </div>
+       </div>
+      </div>
+      <div class="favorite-item card-hover rounded-xl p-6 transition-all" data-category="film" style="background-color: var(--bg-primary); border: 1px solid var(--accent);">
+       <div class="flex items-center gap-4 mb-4">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background-color: var(--accent);"><span class="text-2xl">🎬</span>
+        </div>
+        <div>
+         <h3 class="font-playfair font-semibold" style="color: var(--text-primary);">The School For Good And Evil</h3>
+         <p class="font-cormorant text-sm" style="color: var(--text-secondary);">Fantasy</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Skills Section -->
+   <section id="skills" class="py-20 scroll-section" style="background-color: var(--bg-primary);">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-16">
+      <h2 class="font-playfair text-3xl sm:text-4xl lg:text-5xl font-bold mb-4" style="color: var(--text-primary);">Kemampuan</h2>
+      <div class="w-24 h-1 mx-auto rounded" style="background-color: var(--accent);"></div>
+     </div>
+     <div class="space-y-8"><!-- Menulis -->
+      <div class="skill-item">
+       <div class="flex justify-between mb-2"><span class="font-playfair font-semibold flex items-center gap-2" style="color: var(--text-primary);"> <span>✍️</span> Menulis </span> <span class="font-cormorant" style="color: var(--accent);">70%</span>
+       </div>
+       <div class="h-3 rounded-full overflow-hidden" style="background-color: var(--bg-secondary);">
+        <div class="skill-bar h-full rounded-full" style="width: 0%;" data-width="70"></div>
+       </div>
+      </div><!-- Bernyanyi -->
+      <div class="skill-item">
+       <div class="flex justify-between mb-2"><span class="font-playfair font-semibold flex items-center gap-2" style="color: var(--text-primary);"> <span>🎤</span> Bernyanyi </span> <span class="font-cormorant" style="color: var(--accent);">80%</span>
+       </div>
+       <div class="h-3 rounded-full overflow-hidden" style="background-color: var(--bg-secondary);">
+        <div class="skill-bar h-full rounded-full" style="width: 0%;" data-width="80"></div>
+       </div>
+      </div><!-- Memasak -->
+      <div class="skill-item">
+       <div class="flex justify-between mb-2"><span class="font-playfair font-semibold flex items-center gap-2" style="color: var(--text-primary);"> <span>🍰</span> Memasak Dessert </span> <span class="font-cormorant" style="color: var(--accent);">80%</span>
+       </div>
+       <div class="h-3 rounded-full overflow-hidden" style="background-color: var(--bg-secondary);">
+        <div class="skill-bar h-full rounded-full" style="width: 0%;" data-width="80"></div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Contact Section -->
+   <section id="contact" class="py-20 scroll-section" style="background-color: var(--bg-secondary);">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-16">
+      <h2 class="font-playfair text-3xl sm:text-4xl lg:text-5xl font-bold mb-4" style="color: var(--text-primary);">Hubungi Saya</h2>
+      <div class="w-24 h-1 mx-auto rounded" style="background-color: var(--accent);"></div>
+     </div>
+     <div class="grid lg:grid-cols-2 gap-12"><!-- Contact Info -->
+      <div>
+       <h3 class="font-playfair text-2xl font-semibold mb-6" style="color: var(--text-primary);">Mari Terhubung</h3>
+       <p class="font-cormorant text-lg mb-8" style="color: var(--text-secondary);">Saya selalu terbuka untuk diskusi, kolaborasi, atau sekadar berbagi cerita. Jangan ragu untuk menghubungi saya!</p>
+       <div class="space-y-6"><a href="mailto:najlakhairunnisa617@gmail.com" class="flex items-center gap-4 p-4 rounded-xl card-hover" style="background-color: var(--bg-primary); border: 1px solid var(--accent);">
+         <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background-color: var(--accent);">
+          <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 20 20" style="color: var(--bg-primary);"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" /> <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+          </svg>
+         </div>
+         <div>
+          <p class="font-playfair font-semibold" style="color: var(--text-primary);">Email</p>
+          <p class="font-cormorant" style="color: var(--text-secondary);">najlakhairunnisa617@gmail.com</p>
+         </div></a> <a href="https://instagram.com/nnaajlaa_" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-4 rounded-xl card-hover" style="background-color: var(--bg-primary); border: 1px solid var(--accent);">
+         <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background-color: var(--accent);">
+          <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24" style="color: var(--bg-primary);"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+          </svg>
+         </div>
+         <div>
+          <p class="font-playfair font-semibold" style="color: var(--text-primary);">Instagram</p>
+          <p class="font-cormorant" style="color: var(--text-secondary);">@nnaajlaa_</p>
+         </div></a>
+       </div>
+      </div><!-- Contact Form -->
+      <div class="p-8 rounded-2xl" style="background-color: var(--bg-primary); border: 1px solid var(--accent);">
+       <h3 class="font-playfair text-2xl font-semibold mb-6" style="color: var(--text-primary);">Kirim Pesan</h3>
+       <form id="contactForm" class="space-y-6">
+        <div><label for="name" class="block font-cormorant mb-2" style="color: var(--text-secondary);">Nama</label> <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg font-lora focus:outline-none focus:ring-2" style="background-color: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--accent);" placeholder="Nama Anda">
+        </div>
+        <div><label for="email" class="block font-cormorant mb-2" style="color: var(--text-secondary);">Email</label> <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg font-lora focus:outline-none focus:ring-2" style="background-color: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--accent);" placeholder="email@example.com">
+        </div>
+        <div><label for="message" class="block font-cormorant mb-2" style="color: var(--text-secondary);">Pesan</label> <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 rounded-lg font-lora focus:outline-none focus:ring-2 resize-none" style="background-color: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--accent);" placeholder="Tulis pesan Anda..."></textarea>
+        </div><button type="submit" class="w-full py-3 rounded-lg font-playfair font-semibold transition-all hover:scale-105" style="background-color: var(--accent); color: var(--bg-primary);"> Kirim Pesan </button>
+        <p id="formMessage" class="text-center font-cormorant hidden"></p>
+       </form>
+      </div>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="py-12" style="background-color: var(--bg-primary); border-top: 1px solid var(--accent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"><!-- Feather Quill -->
+     <div class="flex justify-center mb-6">
+      <svg class="w-16 h-16" viewbox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M35 5 Q20 15 15 30 Q17 35 20 37 L22 45 L25 37 Q40 25 35 5" fill="none" stroke="var(--accent)" stroke-width="1.5" /> <path d="M25 15 Q22 25 22 32" stroke="var(--accent)" stroke-width="1" />
+      </svg>
+     </div>
+     <p id="footerQuote" class="font-cormorant text-lg sm:text-xl italic mb-6" style="color: var(--text-secondary);">"I'm still becoming, and this is part of the journey"</p>
+     <div class="flex justify-center gap-6 mb-8"><a href="mailto:najlakhairunnisa617@gmail.com" class="p-3 rounded-full transition-all hover:scale-110" style="background-color: var(--bg-secondary); border: 1px solid var(--accent);" aria-label="Email">
+       <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20" style="color: var(--accent);"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" /> <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+       </svg></a> <a href="https://instagram.com/nnaajlaa_" target="_blank" rel="noopener noreferrer" class="p-3 rounded-full transition-all hover:scale-110" style="background-color: var(--bg-secondary); border: 1px solid var(--accent);" aria-label="Instagram">
+       <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24" style="color: var(--accent);"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+       </svg></a>
+     </div>
+     <p class="font-cormorant" style="color: var(--text-secondary);">© 2025 Najla Khairunnisa</p>
+    </div>
+   </footer><!-- Chatbot -->
+   <div class="chat-bubble"><button id="chatToggle" class="w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition-all hover:scale-110" style="background-color: var(--accent);" aria-label="Chat">
+     <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 20 20" style="color: var(--bg-primary);"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd" />
+     </svg></button> <!-- Chat Window -->
+    <div id="chatWindow" class="hidden absolute bottom-16 right-0 w-80 rounded-2xl shadow-2xl overflow-hidden" style="background-color: var(--bg-secondary); border: 1px solid var(--accent);">
+     <div class="p-4" style="background-color: var(--accent);">
+      <div class="flex items-center justify-between">
+       <h4 class="font-playfair font-semibold" style="color: var(--bg-primary);">Chat dengan Najla</h4><button id="chatClose" class="p-1" aria-label="Close chat">
+        <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20" style="color: var(--bg-primary);"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg></button>
+      </div>
+     </div>
+     <div id="chatMessages" class="h-64 overflow-y-auto p-4 space-y-3" style="background-color: var(--bg-primary);">
+      <div class="flex gap-2">
+       <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background-color: var(--accent);"><span class="text-sm" style="color: var(--bg-primary);">NK</span>
+       </div>
+       <div class="p-3 rounded-lg max-w-[80%]" style="background-color: var(--bg-secondary);">
+        <p class="font-cormorant text-sm" style="color: var(--text-primary);">Halo! Ada yang bisa saya bantu? 😊</p>
+       </div>
+      </div>
+     </div>
+     <div class="p-4" style="background-color: var(--bg-secondary); border-top: 1px solid var(--accent);">
+      <div class="flex gap-2"><input type="text" id="chatInput" class="flex-1 px-4 py-2 rounded-full text-sm focus:outline-none" style="background-color: var(--bg-primary); color: var(--text-primary); border: 1px solid var(--accent);" placeholder="Ketik pesan..."> <button id="chatSend" class="w-10 h-10 rounded-full flex items-center justify-center" style="background-color: var(--accent);" aria-label="Send">
+        <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20" style="color: var(--bg-primary);"><path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
+        </svg></button>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+    // Default configuration
+    const defaultConfig = {
+      hero_quote: "Growing through mistakes, creating through hope.",
+      bio_text: "I'm Najla Khairunnisa, a soul who finds comfort in singing, films, and written worlds. She enjoys expressing herself through sound and stories, where art feels most like home, and she also finds joy in cooking, turning simple ingredients into little pieces of warmth and creativity.",
+      footer_quote: "I'm still becoming, and this is part of the journey",
+      background_color: "#1a1410",
+      surface_color: "#2a2018",
+      text_color: "#f5f0e8",
+      accent_color: "#8b6914"
+    };
+    
+    let config = { ...defaultConfig };
+    
+    // Initialize Element SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (newConfig) => {
+          config = { ...defaultConfig, ...newConfig };
+          
+          // Update hero title
+          const heroTitle = document.getElementById('heroTitle');
+          if (heroTitle && config.hero_quote) {
+            const parts = config.hero_quote.split(',');
+            if (parts.length >= 2) {
+              heroTitle.innerHTML = `${parts[0].trim()},<br><span style="color: var(--accent);">${parts.slice(1).join(',').trim()}</span>`;
+            } else {
+              heroTitle.innerHTML = `<span style="color: var(--accent);">${config.hero_quote}</span>`;
+            }
+          }
+          
+          // Update bio text
+          const bioText = document.getElementById('bioText');
+          if (bioText && config.bio_text) {
+            bioText.textContent = config.bio_text;
+          }
+          
+          // Update footer quote
+          const footerQuote = document.getElementById('footerQuote');
+          if (footerQuote && config.footer_quote) {
+            footerQuote.textContent = `"${config.footer_quote}"`;
+          }
+        },
+        mapToCapabilities: (cfg) => ({
+          recolorables: [
+            {
+              get: () => cfg.background_color || defaultConfig.background_color,
+              set: (value) => {
+                cfg.background_color = value;
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            },
+            {
+              get: () => cfg.surface_color || defaultConfig.surface_color,
+              set: (value) => {
+                cfg.surface_color = value;
+                window.elementSdk.setConfig({ surface_color: value });
+              }
+            },
+            {
+              get: () => cfg.text_color || defaultConfig.text_color,
+              set: (value) => {
+                cfg.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            },
+            {
+              get: () => cfg.accent_color || defaultConfig.accent_color,
+              set: (value) => {
+                cfg.accent_color = value;
+                window.elementSdk.setConfig({ accent_color: value });
+              }
+            }
+          ],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (cfg) => new Map([
+          ["hero_quote", cfg.hero_quote || defaultConfig.hero_quote],
+          ["bio_text", cfg.bio_text || defaultConfig.bio_text],
+          ["footer_quote", cfg.footer_quote || defaultConfig.footer_quote]
+        ])
+      });
+    }
+    
+    // Theme Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const sunIcon = document.getElementById('sunIcon');
+    const moonIcon = document.getElementById('moonIcon');
+    const html = document.documentElement;
+    
+    themeToggle.addEventListener('click', () => {
+      html.classList.toggle('light-mode');
+      sunIcon.classList.toggle('hidden');
+      moonIcon.classList.toggle('hidden');
+    });
+    
+    // Mobile Menu
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    // Close mobile menu on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+    
+    // Smooth scroll for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+    
+    // Filter functionality
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const favoriteItems = document.querySelectorAll('.favorite-item');
+    
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+        
+        filterBtns.forEach(b => {
+          if (b === btn) {
+            b.style.backgroundColor = 'var(--accent)';
+            b.style.color = 'var(--bg-primary)';
+            b.style.border = 'none';
+          } else {
+            b.style.backgroundColor = 'transparent';
+            b.style.color = 'var(--accent)';
+            b.style.border = '2px solid var(--accent)';
+          }
+        });
+        
+        favoriteItems.forEach(item => {
+          if (filter === 'all' || item.dataset.category === filter) {
+            item.style.display = 'block';
+            item.style.opacity = '1';
+            item.style.transform = 'scale(1)';
+          } else {
+            item.style.opacity = '0';
+            item.style.transform = 'scale(0.8)';
+            setTimeout(() => {
+              item.style.display = 'none';
+            }, 300);
+          }
+        });
+      });
+    });
+    
+    // Counter animation
+    const counters = document.querySelectorAll('.counter');
+    let countersAnimated = false;
+    
+    function animateCounters() {
+      counters.forEach(counter => {
+        const target = parseInt(counter.dataset.target);
+        const duration = 2000;
+        const step = target / (duration / 16);
+        let current = 0;
+        
+        const updateCounter = () => {
+          current += step;
+          if (current < target) {
+            counter.textContent = Math.floor(current);
+            requestAnimationFrame(updateCounter);
+          } else {
+            counter.textContent = target;
+          }
+        };
+        
+        updateCounter();
+      });
+    }
+    
+    // Skill bar animation
+    function animateSkillBars() {
+      document.querySelectorAll('.skill-bar').forEach(bar => {
+        const width = bar.dataset.width;
+        bar.style.width = width + '%';
+      });
+    }
+    
+    // Scroll animation observer
+    const observerOptions = {
+      threshold: 0.2,
+      rootMargin: '0px'
+    };
+    
+    const scrollObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('scroll-visible');
+          
+          // Trigger counter animation when stats section is visible
+          if (entry.target.querySelector('.counter') && !countersAnimated) {
+            countersAnimated = true;
+            animateCounters();
+          }
+          
+          // Trigger skill bar animation
+          if (entry.target.querySelector('.skill-bar')) {
+            animateSkillBars();
+          }
+        }
+      });
+    }, observerOptions);
+    
+    document.querySelectorAll('.scroll-section').forEach(section => {
+      section.classList.add('scroll-hidden');
+      scrollObserver.observe(section);
+    });
+    
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    let lastScroll = 0;
+    
+    document.getElementById('app-container').addEventListener('scroll', function() {
+      const currentScroll = this.scrollTop;
+      
+      if (currentScroll > 100) {
+        navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
+      } else {
+        navbar.style.boxShadow = 'none';
+      }
+      
+      lastScroll = currentScroll;
+    });
+    
+    // Chatbot functionality
+    const chatToggle = document.getElementById('chatToggle');
+    const chatWindow = document.getElementById('chatWindow');
+    const chatClose = document.getElementById('chatClose');
+    const chatInput = document.getElementById('chatInput');
+    const chatSend = document.getElementById('chatSend');
+    const chatMessages = document.getElementById('chatMessages');
+    
+    const botResponses = {
+      'halo': 'Halo juga! Senang bertemu denganmu! 😊',
+      'hai': 'Hai! Ada yang ingin kamu ketahui tentang saya? 💫',
+      'siapa': 'Saya Najla Khairunnisa, seorang yang menyukai musik, film, dan menulis. ✨',
+      'musik': 'Saya suka mendengarkan lagu-lagu dari NIKI, Taylor Swift, dan Olivia Rodrigo! 🎵',
+      'film': 'Film favorit saya termasuk The Conjuring, Uncharted, dan Shang-Chi! 🎬',
+      'hobi': 'Hobi saya adalah membaca, menyanyi, menonton film, dan memasak! 📚🎤',
+      'kontak': 'Kamu bisa menghubungi saya via email: najlakhairunnisa617@gmail.com atau Instagram: @nnaajlaa_ 📧',
+      'default': 'Terima kasih pesannya! Saya akan segera merespons. Untuk pertanyaan lebih lanjut, silakan hubungi saya via email atau Instagram ya! 💌'
+    };
+    
+    chatToggle.addEventListener('click', () => {
+      chatWindow.classList.toggle('hidden');
+    });
+    
+    chatClose.addEventListener('click', () => {
+      chatWindow.classList.add('hidden');
+    });
+    
+    function addMessage(text, isUser = false) {
+      const messageDiv = document.createElement('div');
+      messageDiv.className = `flex gap-2 ${isUser ? 'justify-end' : ''}`;
+      
+      if (isUser) {
+        messageDiv.innerHTML = `
+          <div class="p-3 rounded-lg max-w-[80%]" style="background-color: var(--accent);">
+            <p class="font-cormorant text-sm" style="color: var(--bg-primary);">${text}</p>
+          </div>
+        `;
+      } else {
+        messageDiv.innerHTML = `
+          <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background-color: var(--accent);">
+            <span class="text-sm" style="color: var(--bg-primary);">NK</span>
+          </div>
+          <div class="p-3 rounded-lg max-w-[80%]" style="background-color: var(--bg-secondary);">
+            <p class="font-cormorant text-sm" style="color: var(--text-primary);">${text}</p>
+          </div>
+        `;
+      }
+      
+      chatMessages.appendChild(messageDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+    
+    function getBotResponse(message) {
+      const lowerMessage = message.toLowerCase();
+      
+      for (const [key, response] of Object.entries(botResponses)) {
+        if (lowerMessage.includes(key)) {
+          return response;
+        }
+      }
+      
+      return botResponses.default;
+    }
+    
+    function sendMessage() {
+      const text = chatInput.value.trim();
+      if (!text) return;
+      
+      addMessage(text, true);
+      chatInput.value = '';
+      
+      setTimeout(() => {
+        addMessage(getBotResponse(text));
+      }, 800);
+    }
+    
+    chatSend.addEventListener('click', sendMessage);
+    chatInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') sendMessage();
+    });
+    
+    // Contact form
+    const contactForm = document.getElementById('contactForm');
+    const formMessage = document.getElementById('formMessage');
+    
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      formMessage.classList.remove('hidden');
+      formMessage.style.color = 'var(--accent)';
+      formMessage.textContent = 'Terima kasih! Pesan Anda telah terkirim. ✨';
+      
+      contactForm.reset();
+      
+      setTimeout(() => {
+        formMessage.classList.add('hidden');
+      }, 5000);
+    });
+    
+    // Initial animation trigger
+    setTimeout(() => {
+      document.querySelectorAll('.animate-fadeInUp').forEach(el => {
+        el.style.opacity = '1';
+      });
+    }, 100);
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c8afc21306db59c',t:'MTc3MDIxNjY3My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
